@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article class="page container">
+  <header class="page-header measure">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+  </header>
+  <div class="service-grid service-grid-full">
+    {{ range hugo.Data.services }}
+      <div class="service-card">
+        <h2>{{ .title }}</h2>
+        <p>{{ .summary }}</p>
+        {{ with .points }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      </div>
+    {{ end }}
+  </div>
+  <div class="prose measure">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

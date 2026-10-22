@@ -1,0 +1,66 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ .Params.eyebrow }}</p>
+      <h1>{{ .Params.headline }}</h1>
+      <p class="lead">{{ .Params.lead }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ "blog/" | relURL }}">Read the blog</a>
+        <a class="btn btn-ghost" href="{{ "contact/" | relURL }}">Get in touch</a>
+      </div>
+    </div>
+    {{ $img := (resources.Get "images/profile.jpeg").Fill "640x720 webp q85 Top" }}
+    <figure class="hero-portrait">
+      <img src="{{ $img.RelPermalink }}" width="320" height="360" alt="{{ site.Params.author.name }}">
+      <figcaption><strong>{{ site.Params.author.name }}</strong><span>{{ site.Params.author.role }}</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+{{ $posts := where site.RegularPages "Section" "blog" }}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Latest writing</h2>
+      <a class="text-link" href="{{ "blog/" | relURL }}">All posts →</a>
+    </div>
+    {{ with first 6 $posts }}
+      <div class="post-grid">
+        {{ range . }}{{ partial "post-card.html" . }}{{ end }}
+      </div>
+    {{ else }}
+      <p class="muted">No posts yet. Check back soon.</p>
+    {{ end }}
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head">
+      <h2>How I can help</h2>
+      <a class="text-link" href="{{ "services/" | relURL }}">Services →</a>
+    </div>
+    <div class="service-grid">
+      {{ range first 3 hugo.Data.services }}
+        <div class="service-card">
+          <h3>{{ .title }}</h3>
+          <p>{{ .summary }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta">
+      <div>
+        <h2>Have a database problem?</h2>
+        <p>Whether it's a slow query, an upcoming migration or a platform that needs to survive the next outage, let's talk it through.</p>
+      </div>
+      <a class="btn btn-primary" href="{{ "contact/" | relURL }}">Book a call</a>
+    </div>
+  </div>
+</section>
+{{ end }}

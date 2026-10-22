@@ -1,0 +1,67 @@
+baseURL = "https://www.statefulops.com/"
+locale = "en-GB"
+title = "Statefulops"
+enableRobotsTXT = true
+enableGitInfo = false
+summaryLength = 40
+
+[pagination]
+  pagerSize = 10
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+  description = "Independent database consulting. Practical advice on designing, running and scaling the stateful systems your business depends on."
+  tagline = "Database consulting for teams that run stateful systems in production."
+  # Fallback social-share image (static path) used when a post has no `images` front matter.
+  images = ["images/statefulops-og.png"]
+  # Contact details: only the links that are set are shown.
+  email = "hello@statefulops.com"
+  linkedin = ""   # e.g. "https://www.linkedin.com/in/your-handle"
+  github = ""     # e.g. "https://github.com/your-handle"
+  mastodon = ""
+  bluesky = ""
+
+  [params.author]
+    name = "Neil Armitage"
+    role = "Founder & Principal Consultant"
+    bio = "I help engineering teams design, operate and scale their databases, from schema design and query tuning to high availability and running data on Kubernetes."
+
+[menus]
+  [[menus.main]]
+    name = "Blog"
+    pageRef = "/blog"
+    weight = 10
+  [[menus.main]]
+    name = "Services"
+    pageRef = "/services"
+    weight = 20
+  [[menus.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 30
+  [[menus.main]]
+    name = "Contact"
+    pageRef = "/contact"
+    weight = 40
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = false
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]
+
+[services.rss]
+  limit = 30
+
+[sitemap]
+  changeFreq = "weekly"

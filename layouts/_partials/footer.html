@@ -1,0 +1,16 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <strong>{{ site.Title }}</strong>
+      <p>{{ site.Params.tagline }}</p>
+    </div>
+    <ul class="footer-links">
+      {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+      <li><a href="{{ "index.xml" | relURL }}">RSS</a></li>
+    </ul>
+    {{ partial "social.html" . }}
+  </div>
+  <div class="container footer-meta">
+    <p>&copy; {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+  </div>
+</footer>

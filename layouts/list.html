@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="container-narrow list-page">
+  <header class="page-header">
+    {{ if eq .Kind "term" }}<p class="eyebrow">Tagged</p>{{ end }}
+    <h1>{{ if eq .Kind "term" }}#{{ end }}{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+    {{ if eq .Section "blog" }}
+      <p class="list-links"><a class="text-link" href="{{ "tags/" | relURL }}">Browse by tag</a> · <a class="text-link" href="{{ with .OutputFormats.Get "rss" }}{{ .RelPermalink }}{{ else }}{{ "index.xml" | relURL }}{{ end }}">RSS feed</a></p>
+    {{ end }}
+  </header>
+
+  {{ $paginator := .Paginate .RegularPagesRecursive }}
+  {{ range $paginator.Pages.GroupByDate "2006" }}
+    <h2 class="year">{{ .Key }}</h2>
+    <div class="post-list">
+      {{ range .Pages }}{{ partial "post-card.html" . }}{{ end }}
+    </div>
+  {{ else }}
+    <p class="muted">Nothing here yet.</p>
+  {{ end }}
+
+  {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination" aria-label="Pagination">
+      {{ with $paginator.Prev }}<a href="{{ .URL }}">← Newer</a>{{ end }}
+      <span>Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+      {{ with $paginator.Next }}<a href="{{ .URL }}">Older →</a>{{ end }}
+    </nav>
+  {{ end }}
+</section>
+{{ end }}

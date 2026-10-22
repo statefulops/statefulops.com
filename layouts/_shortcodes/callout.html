@@ -1,0 +1,12 @@
+{{- /*
+  Usage:
+    {{< callout >}}A helpful note.{{< /callout >}}
+    {{< callout type="warning" title="Careful" >}}Don't run this on production.{{< /callout >}}
+  Types: note (default), tip, warning
+*/ -}}
+{{ $type := .Get "type" | default "note" }}
+{{ $titles := dict "note" "Note" "tip" "Tip" "warning" "Warning" }}
+<div class="callout callout-{{ $type }}">
+  <p class="callout-title">{{ .Get "title" | default (index $titles $type) | default "Note" }}</p>
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</div>

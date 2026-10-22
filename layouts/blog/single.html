@@ -1,0 +1,42 @@
+{{ define "main" }}
+<article class="post container-narrow">
+  <header class="post-header">
+    <p class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+      <span aria-hidden="true">·</span>
+      <span>{{ .ReadingTime }} min read</span>
+      {{ if and (gt .Lastmod .Date) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}
+        <span aria-hidden="true">·</span>
+        <span>Updated {{ .Lastmod.Format "2 Jan 2006" }}</span>
+      {{ end }}
+    </p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ with .GetTerms "tags" }}
+      <ul class="tag-list">
+        {{ range . }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}
+      </ul>
+    {{ end }}
+  </header>
+
+  {{ if and (ne .Params.toc false) (gt .WordCount 600) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+    <details class="toc" open>
+      <summary>Contents</summary>
+      {{ .TableOfContents }}
+    </details>
+  {{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    {{ partial "author-box.html" . }}
+
+    <nav class="post-nav" aria-label="More posts">
+      {{ with .PrevInSection }}<a class="post-nav-link next" href="{{ .RelPermalink }}"><span>Newer</span>{{ .Title }}</a>{{ end }}
+      {{ with .NextInSection }}<a class="post-nav-link prev" href="{{ .RelPermalink }}"><span>Older</span>{{ .Title }}</a>{{ end }}
+    </nav>
+  </footer>
+</article>
+{{ end }}

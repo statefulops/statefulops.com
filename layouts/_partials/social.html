@@ -1,0 +1,8 @@
+{{ $p := site.Params }}
+<ul class="social">
+  {{ with $p.email }}<li><a href="mailto:{{ . }}">Email</a></li>{{ end }}
+  {{ with $p.linkedin }}<li><a href="{{ . }}" rel="me noopener">LinkedIn</a></li>{{ end }}
+  {{ with $p.github }}<li><a href="{{ . }}" rel="me noopener">GitHub</a></li>{{ end }}
+  {{ with $p.mastodon }}<li><a href="{{ . }}" rel="me noopener">Mastodon</a></li>{{ end }}
+  {{ with $p.bluesky }}<li><a href="{{ . }}" rel="me noopener">Bluesky</a></li>{{ end }}
+</ul>

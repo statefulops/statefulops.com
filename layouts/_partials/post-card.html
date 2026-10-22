@@ -1,0 +1,14 @@
+<article class="post-card">
+  <div class="post-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+    <span aria-hidden="true">·</span>
+    <span>{{ .ReadingTime }} min read</span>
+  </div>
+  <h3 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p class="post-card-summary">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}</p>
+  {{ with .GetTerms "tags" }}
+    <ul class="tag-list">
+      {{ range . }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}
+    </ul>
+  {{ end }}
+</article>

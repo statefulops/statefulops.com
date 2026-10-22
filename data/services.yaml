@@ -1,0 +1,42 @@
+# Services shown on the home page (first three) and the Services page (all).
+- title: Performance tuning & troubleshooting
+  summary: Find out why the database is slow and fix it, from query plans and indexing to configuration and resource sizing.
+  points:
+    - Query and index analysis
+    - Configuration and capacity review
+    - Incident support and root-cause analysis
+
+- title: Architecture & design reviews
+  summary: An independent second opinion on schemas, data models and platform choices before they become expensive to change.
+  points:
+    - Schema and data model review
+    - Choosing the right database for the workload
+    - Scaling strategy: replicas, partitioning and sharding
+
+- title: Databases on Kubernetes
+  summary: Run stateful workloads on Kubernetes with confidence, using operators, storage and backups that hold up in production.
+  points:
+    - Operator selection and rollout
+    - Storage, backup and restore design
+    - Upgrade and failover runbooks
+
+- title: High availability & disaster recovery
+  summary: Make sure you can survive a failure and prove you can restore, with tested backups, replication and clear recovery objectives.
+  points:
+    - RPO/RTO definition
+    - Replication and failover setup
+    - Restore testing and DR drills
+
+- title: Migrations & upgrades
+  summary: Plan and run major version upgrades, cloud moves and engine migrations with minimal downtime and no surprises.
+  points:
+    - Upgrade planning and rehearsal
+    - On-prem to cloud and cross-engine moves
+    - Cut-over and rollback plans
+
+- title: Training & mentoring
+  summary: Level up your team's database skills with workshops and hands-on mentoring tailored to your stack.
+  points:
+    - Workshops for developers and SREs
+    - On-call readiness
+    - Ongoing advisory retainers

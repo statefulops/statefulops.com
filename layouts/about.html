@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ $img := (resources.Get "images/profile.jpeg").Fill "720x860 webp q85 Top" }}
+<article class="page container about">
+  <figure class="about-portrait">
+    <img src="{{ $img.RelPermalink }}" width="360" height="430" alt="{{ site.Params.author.name }}">
+  </figure>
+  <div>
+    <header class="page-header">
+      <p class="eyebrow">{{ site.Params.author.role }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </header>
+    <div class="prose">
+      {{ .Content }}
+    </div>
+    {{ partial "social.html" . }}
+  </div>
+</article>
+{{ end }}
