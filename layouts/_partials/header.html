@@ -1,7 +1,7 @@
 {{ $logo := (resources.Get "images/logo.png").Resize "480x" }}
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} home">
+    <a class="brand" href="{{ site.Home.RelPermalink }}" aria-label="{{ site.Title }} home">
       <img class="brand-logo" src="{{ $logo.RelPermalink }}" width="{{ div $logo.Width 2 }}" height="{{ div $logo.Height 2 }}" alt="{{ site.Title }}">
     </a>
 
