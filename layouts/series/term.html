@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="container-narrow list-page">
+  <header class="page-header">
+    <p class="eyebrow"><a href="{{ "series/" | relURL }}">Series</a></p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+  </header>
+  <ol class="series-list">
+    {{ range sort .Pages "Params.series_part" }}
+      <li>
+        <span class="series-num">{{ .Params.series_part }}</span>
+        <div>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p>{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}</p>
+          <p class="post-meta">{{ .ReadingTime }} min read</p>
+        </div>
+      </li>
+    {{ end }}
+  </ol>
+</section>
+{{ end }}

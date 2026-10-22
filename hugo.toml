@@ -4,12 +4,14 @@ title = "Statefulops"
 enableRobotsTXT = true
 enableGitInfo = false
 summaryLength = 40
+capitalizeListTitles = false
 
 [pagination]
   pagerSize = 10
 
 [taxonomies]
   tag = "tags"
+  series = "series"
 
 [params]
   description = "Independent database consulting. Practical advice on designing, running and scaling the stateful systems your business depends on."
@@ -18,21 +20,26 @@ summaryLength = 40
   images = ["images/statefulops-og.png"]
   # Contact details: only the links that are set are shown.
   email = "hello@statefulops.com"
-  linkedin = ""   # e.g. "https://www.linkedin.com/in/your-handle"
+  linkedin = "https://www.linkedin.com/in/neil-a-5750885"
   github = ""     # e.g. "https://github.com/your-handle"
   mastodon = ""
   bluesky = ""
+  buymeacoffee = "https://www.buymeacoffee.com/neilarmitage"
 
   [params.author]
     name = "Neil Armitage"
     role = "Founder & Principal Consultant"
-    bio = "I help engineering teams design, operate and scale their databases, from schema design and query tuning to high availability and running data on Kubernetes."
+    bio = "Over three decades as a MySQL and Oracle DBA, now helping teams design, run and scale databases and stateful workloads, on VMs, in the cloud and on Kubernetes."
 
 [menus]
   [[menus.main]]
     name = "Blog"
     pageRef = "/blog"
     weight = 10
+  [[menus.main]]
+    name = "Series"
+    pageRef = "/series"
+    weight = 15
   [[menus.main]]
     name = "Services"
     pageRef = "/services"

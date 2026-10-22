@@ -11,7 +11,9 @@
       {{ end }}
     </p>
     <h1>{{ .Title }}</h1>
-    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ range .GetTerms "series" }}<p class="post-series">Part of the <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> series</p>{{ end }}
+    {{/* Skip the description when it is just the opening paragraph (as with imported posts). */}}
+    {{ with .Description }}{{ if not (strings.Contains $.Plain (substr (strings.TrimSuffix "…" .) 0 60)) }}<p class="lead">{{ . }}</p>{{ end }}{{ end }}
     {{ with .GetTerms "tags" }}
       <ul class="tag-list">
         {{ range . }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}
@@ -31,6 +33,7 @@
   </div>
 
   <footer class="post-footer">
+    {{ partial "series-box.html" . }}
     {{ partial "author-box.html" . }}
 
     <nav class="post-nav" aria-label="More posts">

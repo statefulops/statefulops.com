@@ -1,0 +1,13 @@
+{{- /* Page-bundle images are resized to WebP and lazy-loaded; anything else is passed through. */ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $img := "" -}}
+{{- if not $u.IsAbs -}}
+  {{- $img = .Page.Resources.Get $u.Path -}}
+{{- end -}}
+{{- if and $img (in (slice "png" "jpg" "jpeg" "webp") $img.MediaType.SubType) -}}
+  {{- $full := $img -}}
+  {{- if gt $img.Width 1480 -}}{{- $img = $img.Resize "1480x webp q82" -}}{{- else -}}{{- $img = $img.Process "webp q82" -}}{{- end -}}
+  <a class="image-link" href="{{ $full.RelPermalink }}"><img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ .PlainText }}" loading="lazy" decoding="async"{{ with .Title }} title="{{ . }}"{{ end }}></a>
+{{- else -}}
+  <img src="{{ .Destination | safeURL }}" alt="{{ .PlainText }}" loading="lazy"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- end -}}

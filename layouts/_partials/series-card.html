@@ -1,0 +1,8 @@
+{{- /* Context: a series term page. */ -}}
+{{ $posts := sort .Pages "Params.series_part" }}
+<article class="series-card">
+  <p class="series-count">{{ len $posts }} part{{ if ne (len $posts) 1 }}s{{ end }}</p>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ with .Description }}<p class="series-desc">{{ . | truncate 180 }}</p>{{ end }}
+  {{ with index $posts 0 }}<a class="text-link" href="{{ .RelPermalink }}">Start with part 1 →</a>{{ end }}
+</article>

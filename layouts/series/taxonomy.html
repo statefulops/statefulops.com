@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section class="container list-page">
+  <header class="page-header measure">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+  </header>
+  <div class="series-grid">
+    {{ range .Pages.ByWeight }}{{ partial "series-card.html" . }}{{ end }}
+  </div>
+</section>
+{{ end }}

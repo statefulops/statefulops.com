@@ -1,0 +1,20 @@
+{{- /* Context: a blog post. Lists every part of the post's series, in order. */ -}}
+{{ $current := . }}
+{{ range .GetTerms "series" }}
+  {{ $posts := sort .Pages "Params.series_part" }}
+  <details class="series-box"{{ if lt (len $posts) 13 }} open{{ end }}>
+    <summary>
+      <span class="eyebrow">Series</span>
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      {{ with $current.Params.series_part }}<span class="muted">· part {{ . }} of {{ len $posts }}</span>{{ end }}
+    </summary>
+    <ol>
+      {{ range $posts }}
+        <li value="{{ .Params.series_part | default 0 }}">
+          {{ if eq .RelPermalink $current.RelPermalink }}<strong aria-current="page">{{ .LinkTitle }}</strong>
+          {{ else }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+        </li>
+      {{ end }}
+    </ol>
+  </details>
+{{ end }}

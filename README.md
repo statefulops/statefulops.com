@@ -20,7 +20,8 @@ hugo --gc --minify                  # production build into ./public
 | --- | --- |
 | Site settings, menu, author bio, contact/social links | `hugo.toml` |
 | Home page headline | `content/_index.md` |
-| Blog posts | `content/blog/` |
+| Blog posts (one folder per post, images alongside) | `content/blog/<slug>/index.md` |
+| Series descriptions and order | `content/series/<series>/_index.md` |
 | About / Services / Contact pages | `content/*.md` |
 | Service cards (home + services page) | `data/services.yaml` |
 | Logo and profile photo | `assets/images/` (resized automatically) |
@@ -40,3 +41,22 @@ Test this on staging first.
 ```
 
 Types: `note`, `tip`, `warning`.
+
+### Series
+
+To add a post to a series, set its name and part number in the front matter:
+
+```yaml
+series: ["Kubernetes fundamentals"]
+series_part: 3
+```
+
+Each post in a series gets a box linking to the other parts, and `/series/` lists all series. A new series also needs a `content/series/<slug>/_index.md` with its description and `weight` (display order).
+
+### Images
+
+Put images next to the post's `index.md` and reference them by filename: `![Alt text](diagram.png)`. They're resized and converted to WebP at build time.
+
+## Imported from WordPress
+
+The posts in `content/blog/` were imported from the old WordPress site. Each one has an `aliases` entry for its old `/YYYY/MM/DD/slug/` URL, and the old `/articles/...` pages redirect to the matching series, so existing links keep working.
