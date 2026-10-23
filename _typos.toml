@@ -1,3 +1,12 @@
+[default]
+extend-ignore-re = [
+  # Generated image names, e.g. statefulops-69ba7abe03d69.png
+  "statefulops-[0-9a-f]+",
+  # base64 example values in the Secrets post
+  "c2VjcmV0a2V5MTIz",
+]
+
 [default.extend-words]
 statefulops = "statefulops"
 Continuent = "Continuent"
+AKS = "AKS"
