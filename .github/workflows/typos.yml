@@ -1,0 +1,21 @@
+# Spell-check the repo with typos on every branch push and pull request.
+name: Spell check
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  typos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check spelling
+        uses: crate-ci/typos@v1.51.1
