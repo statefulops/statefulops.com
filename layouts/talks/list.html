@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="container-narrow list-page">
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  </header>
+
+  <div class="post-list">
+    {{ range .RegularPages.ByDate.Reverse }}
+      <article class="post-card">
+        <div class="post-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+          {{ with .Params.event }}<span aria-hidden="true">·</span><span>{{ . }}</span>{{ end }}
+        </div>
+        <h3 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="post-card-summary">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}</p>
+      </article>
+    {{ else }}
+      <p class="muted">Nothing here yet.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
