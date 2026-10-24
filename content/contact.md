@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-description: "Tell me a little about your project and I'll get back to you, usually within one working day."
+description: "Tell me a little about your project and I'll get back to you, I'm always busy but will try to reply within one working day."
 ---
 
 The best way to reach me is by email:
