@@ -406,3 +406,11 @@ code, pre { font-family: var(--font-mono); font-size: .88em; }
 .series-box li::marker { color: var(--muted); }
 
 .image-link { display: block; }
+
+/* ---------- Talks ---------- */
+.talk-video {
+  aspect-ratio: 16 / 9; margin: 0 0 1.25rem; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg-soft); overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.talk-video iframe { width: 100%; height: 100%; border: 0; }
+.talk-actions { margin: 0 0 2rem; }
