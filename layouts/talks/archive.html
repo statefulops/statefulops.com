@@ -1,0 +1,25 @@
+{{ define "main" }}
+<section class="container-narrow list-page">
+  <header class="page-header">
+    <p class="eyebrow"><a href="{{ .Parent.RelPermalink }}">Talks</a></p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  </header>
+
+  <div class="post-list">
+    {{ range .Params.talks }}
+      {{ $pdf := $.Resources.Get .file }}
+      <article class="post-card">
+        <div class="post-meta">
+          <span>{{ .year }}</span>
+          {{ with .event }}<span aria-hidden="true">·</span><span>{{ . }}</span>{{ end }}
+        </div>
+        <h3 class="post-card-title">{{ if $pdf }}<a href="{{ $pdf.RelPermalink }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</h3>
+        {{ with .summary }}<p class="post-card-summary">{{ . }}</p>{{ end }}
+        {{ with $pdf }}<p class="post-card-summary"><a class="text-link" href="{{ .RelPermalink }}">Slides (PDF)</a></p>{{ end }}
+      </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
