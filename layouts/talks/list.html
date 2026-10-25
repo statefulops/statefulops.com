@@ -7,7 +7,7 @@
   </header>
 
   <div class="post-list">
-    {{ range .RegularPages.ByDate.Reverse }}
+    {{ range where .RegularPages.ByDate.Reverse "Params.archive" "!=" true }}
       <article class="post-card">
         <div class="post-meta">
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
@@ -20,5 +20,9 @@
       <p class="muted">Nothing here yet.</p>
     {{ end }}
   </div>
+
+  {{ range where .RegularPages "Params.archive" true }}
+    <p class="list-links"><a class="text-link" href="{{ .RelPermalink }}">{{ .Title }} →</a></p>
+  {{ end }}
 </section>
 {{ end }}
