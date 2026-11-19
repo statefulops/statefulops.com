@@ -16,4 +16,4 @@ Statefulops is where I write up the things I wish were written down when I was f
 
 ## Get in touch
 
-If you have a database challenge, [drop me a line](/contact/). I'm always happy to have a no-obligation chat.
+The best place to find me is on [LinkedIn](https://www.linkedin.com/in/neil-a-5750885), or follow along via the [RSS feed](/index.xml).

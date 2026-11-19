@@ -44,18 +44,19 @@ capitalizeListTitles = false
     name = "Talks"
     pageRef = "/talks"
     weight = 17
-  [[menus.main]]
-    name = "Services"
-    pageRef = "/services"
-    weight = 20
+  # Services and Contact hidden for now (blog-focused). Uncomment to restore.
+  # [[menus.main]]
+  #   name = "Services"
+  #   pageRef = "/services"
+  #   weight = 20
   [[menus.main]]
     name = "About"
     pageRef = "/about"
     weight = 30
-  [[menus.main]]
-    name = "Contact"
-    pageRef = "/contact"
-    weight = 40
+  # [[menus.main]]
+  #   name = "Contact"
+  #   pageRef = "/contact"
+  #   weight = 40
 
 [markup]
   [markup.goldmark.renderer]
