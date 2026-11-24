@@ -10,3 +10,5 @@ extend-ignore-re = [
 statefulops = "statefulops"
 Continuent = "Continuent"
 AKS = "AKS"
+IST = "IST"
+SST = "SST"
