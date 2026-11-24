@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Percona PXC Operator"
-date: "2026-11-12T07:04:00+00:00"
+date: "2026-11-25T07:04:00+00:00"
 tags: ['MySQL','PXC']
 categories: ['MySQL']
 authors:
